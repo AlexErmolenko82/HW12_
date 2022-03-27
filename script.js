@@ -4,7 +4,7 @@
 // После получения результата найти пользователя, который работает в компании "Johns Group"
 // Получение данных нужно реализовать одним из способов (.then/.catch) или (async/await)
 
-const getJson = async (url, userName) => {
+const getJson = async (url, companyName) => {
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -12,7 +12,7 @@ const getJson = async (url, userName) => {
     } else {
     const data = await response.json();
     console.log(data);
-    let filteredData = data.filter(data => data.company.name === userName);
+    let filteredData = data.filter(data => data.company.name === companyName);
     console.log(filteredData);
     const {username, company: {name}} = filteredData[0];
     console.log(`Company name: ${name}; username: ${username}`);
@@ -28,5 +28,5 @@ const getJson = async (url, userName) => {
 
 
 let url = "https://jsonplaceholder.typicode.com/users";
-let userName = "Johns Group";
-getJson(url, userName);
+let companyName = "Johns Group";
+getJson(url, companyName);
