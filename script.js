@@ -10,11 +10,15 @@ const getJson = async (url, companyName) => {
     if (!response.ok) {
       throw response;
     } else {
+    console.log(response);
     const data = await response.json();
     console.log(data);
-    let filteredData = data.filter(data => data.company.name === companyName);
-    console.log(filteredData);
-    const {username, company: {name}} = filteredData[0];
+    // let filteredData = data.filter(data => data.company.name === companyName);
+    // console.log(filteredData);
+    // const {username, company: {name}} = filteredData[0];
+
+    const {username, company: {name}} = data.filter(data => data.company.name === companyName)[0];
+
     console.log(`Company name: ${name}; username: ${username}`);
     }
   } catch (responseError) {
