@@ -17,7 +17,9 @@ const getJson = async (url, companyName) => {
     // console.log(filteredData);
     // const {username, company: {name}} = filteredData[0];
 
-    const {username, company: {name}} = data.filter(data => data.company.name === companyName)[0];
+    // const {username, company: {name}} = data.filter(data => data.company.name === companyName)[0];
+    
+    const {username, company: {name}} = data.filter(({ company: {name}}) => name === companyName)[0];
 
     console.log(`Company name: ${name}; username: ${username}`);
     }
